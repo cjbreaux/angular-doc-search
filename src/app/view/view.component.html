@@ -1,0 +1,15 @@
+<p>test</p>
+<label>Username: </label>
+<input type="text" [(ngModel)]="docName">
+<button (click)="search()">Search</button>
+<div *ngIf="response">
+  <div class="docView" *ngFor="let doctor of response.data">
+    <p>{{doctor.profile.first_name}} {{doctor.profile.last_name}}, {{doctor.profile.title}}</p>
+    <p>{{doctor.practices[0].visit_address.street}}</p>
+    <p>{{doctor.practices[0].visit_address.city}}, {{doctor.practices[0].visit_address.state}}</p>
+    <p>{{doctor.practices[0].visit_address.zip}}</p>
+    <p *ngIf="doctor.practices[0].website">{{doctor.practices[0].website}}</p>
+    <p *ngIf="doctor.practices[0].accepts_new_patients === true">Accepting new patients</p>
+    <br>
+  </div>
+</div>
